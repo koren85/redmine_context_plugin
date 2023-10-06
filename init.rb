@@ -1,3 +1,6 @@
+require_dependency 'redmine_context_plugin/hooks/issue_form_hook'
+require_dependency 'redmine_context_plugin/issue_patch'
+
 Redmine::Plugin.register :redmine_context_plugin do
   name 'Redmine Context Plugin plugin'
   author 'Author name'

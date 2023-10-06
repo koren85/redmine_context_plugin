@@ -1,4 +1,4 @@
-class ContextProdUrl < ApplicationRecord
+class ContextProdUrl < ActiveRecord::Base
   belongs_to :user_created, class_name: 'User'
   belongs_to :user_modified, class_name: 'User', optional: true
   belongs_to :context_region
