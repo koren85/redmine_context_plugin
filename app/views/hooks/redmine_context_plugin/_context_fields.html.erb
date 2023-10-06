@@ -1,0 +1,40 @@
+<% if @issue.tracker.name == 'Контекст' %>
+  <fieldset style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+    <legend style="font-weight: bold;">Дополнительные параметры контекста</legend>
+
+    <p>
+      <%= f.label :context_subj_id, 'Назначение создания среды' %>
+      <%= f.collection_select :context_subj_id, ContextSubj.all, :id, :reason, include_blank: true %>
+    </p>
+
+    <p>
+      <%= f.label :context_region_id, 'Регион' %>
+      <%= f.collection_select :context_region_id, ContextRegion.all, :id, :name, include_blank: true %>
+    </p>
+
+    <p>
+      <%= f.label :context_etalon_url_id, 'Контекст эталона' %>
+      <%= f.collection_select :context_etalon_url_id, ContextEtalonUrl.all, :id, :url, include_blank: true %>
+    </p>
+
+    <p>
+      <%= f.label :need_prod, 'Нужен Prod?' %>
+      <%= f.check_box :need_prod %>
+    </p>
+
+    <p>
+      <%= f.label :context_prod_url_id, 'Контекст региона' %>
+      <%= f.collection_select :context_prod_url_id, ContextProdUrl.all, :id, :url, include_blank: true %>
+    </p>
+
+    <p>
+      <%= f.label :prod_context_reason, 'Причина запроса контекста Prod' %>
+      <%= f.text_area :prod_context_reason, maxlength: 1000 %>
+    </p>
+
+    <p>
+      <%= f.label :environment_expiry_date, 'Срок жизни среды' %>
+      <%= f.date_field :environment_expiry_date %>
+    </p>
+  </fieldset>
+<% end %>
