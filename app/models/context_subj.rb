@@ -1,8 +1,9 @@
 class ContextSubj < ApplicationRecord
-  belongs_to :user_created, class_name: 'User'
-  belongs_to :user_modified, class_name: 'User', optional: true
+  validates_presence_of :reason
 
-  validates :reason, presence: true
+  belongs_to :author, class_name: 'User'
+  belongs_to :updater, class_name: 'User', optional: true
+  has_many :issues, dependent: :destroy # предполагая, что у нас будет отдельная таблица задач, связанных с этой сущностью
 
-  # дополнительные атрибуты и методы
+  # дополнительные валидации и логика...
 end

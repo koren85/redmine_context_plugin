@@ -1,9 +1,10 @@
 class ContextProdUrl < ApplicationRecord
-  belongs_to :user_created, class_name: 'User'
-  belongs_to :user_modified, class_name: 'User', optional: true
   belongs_to :context_region
+  belongs_to :author, class_name: 'User'
+  belongs_to :updater, class_name: 'User', optional: true
 
-  validates :url, presence: true, format: URI::regexp(%w[http https])
+  validates_presence_of :url
+  validates_format_of :url, with: URI::regexp(%w(http https))
 
-  # дополнительные атрибуты и методы
+  # дополнительные валидации и логика...
 end

@@ -1,8 +1,9 @@
 class ContextRegion < ApplicationRecord
-  belongs_to :user_created, class_name: 'User'
-  belongs_to :user_modified, class_name: 'User', optional: true
-  has_many :context_etalon_urls
-  has_many :context_prod_urls
+  has_many :etalon_urls, class_name: 'ContextEtalonUrl', dependent: :destroy
+  has_many :prod_urls, class_name: 'ContextProdUrl', dependent: :destroy
 
-  # дополнительные атрибуты и методы
+  belongs_to :author, class_name: 'User'
+  belongs_to :updater, class_name: 'User', optional: true
+
+  # дополнительные валидации и логика...
 end
